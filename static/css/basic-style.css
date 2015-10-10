@@ -1,0 +1,74 @@
+body {
+    /*opacity: 1;
+    min-height: 245px;
+     */background-color: #e4e5e6;
+}
+
+/*.main {
+    padding: 80px 30px 0 280px;
+}
+
+.main {
+width: 100%;
+padding-left: 80px;
+}
+
+@media (max-width: 991px)
+.main {
+padding: 90px 30px 0 30px;
+z-index: 10;
+position: relative;
+}
+
+.main {
+background: #e4e5e6;
+padding: 80px 30px 0 280px;
+}*/
+
+ul.demographic {
+    padding: 0;
+    margin-bottom: 30px;
+    list-style: none;
+    background: #fff;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+ul.demographic li {
+    height: 150px;
+    text-align: right;
+    padding: 15px;
+    border-right: 1px solid #d1d4d7;
+    margin-right: -1px;
+    font-size: 14px;
+    position: relative;
+    display: table-cell;
+}
+
+.progress.thin .progress-bar {
+    font-size:6px;
+    line-height:10px
+}
+
+.panel {
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 30px;
+}
+
+.panel.panel-default .panel-heading {
+    background: #f8f9fa;
+}
+
+.panel.panel-default {
+    border: none;
+}
+
+.panel .panel-heading h2, .panel .panel-heading h3 {
+    display: inline-block;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+}

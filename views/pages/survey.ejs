@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+    <head>
+        <% include ../partials/head %>
+    </head>
+    <body>
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <h1>Test</h1>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+                <ul id="surveys" class="sidebar-nav">
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+
+                    <div class="alert alert-success">
+                          <a href="#" class="close" data-dismiss="alert"
+                              aria-label="close">&times;</a>
+                            <strong>Success!</strong> Indicates a successful or
+                            positive action.
+                    </div>
+
+                    <div class="row">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+
+                        <a href="#" class="btn btn-default" id="new_subject">New
+                            subject</a>
+
+                        <h2>CHART1</h2>
+                        <a href="#" class="btn btn-default" id="yes1">Yes</a>
+                        <a href="#" class="btn btn-default" id="no1">No</a>
+
+                        <h2>CHART2</h2>
+                        <a href="#" class="btn btn-default" id="yes2">Yes</a>
+                        <a href="#" class="btn btn-default" id="no2">No</a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <script src="/static/js/jquery-1.11.3.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+var socket = io();
+
+socket.on('info', function(info) {
+    console.log('INFO: ', info);
+})
+
+socket.on('warning', function(warning) {
+    console.log('WARNING: ', warning);
+})
+
+socket.on('err', function(err) {
+    console.log('ERROR: ', err);
+})
+
+$("#new_subject").click(function(e) {
+    e.preventDefault();
+    socket.emit('new_subject', { survey_id: 1 });
+});
+
+$("#yes1").click(function(e) {
+    e.preventDefault();
+    socket.emit('insert_response', { response_id: 2, survey_id: 1, question_id: 5, answer_id: 12 });
+});
+
+$("#no1").click(function(e) {
+    e.preventDefault();
+    socket.emit('insert_response', { response_id: 2, survey_id: 1, question_id: 5, answer_id: 13 });
+});
+
+$("#yes2").click(function(e) {
+    e.preventDefault();
+    socket.emit('insert_response', { response_id: 2, survey_id: 1, question_id: 6, answer_id: 15 });
+});
+
+$("#no2").click(function(e) {
+    e.preventDefault();
+    socket.emit('insert_response', { response_id: 2, survey_id: 1, question_id: 6, answer_id: 16 });
+});
+        </script>
+
+        <!-- Menu Toggle Script -->
+        <script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+        </script>
+    </body>
+</html>
