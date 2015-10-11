@@ -18,7 +18,7 @@ function generate_menu(surveys) {
     for(var i=0; i < surveys.length; i++) {
         var survey_li = document.createElement('li');
         survey_li.setAttribute('class', 'survey');
-        survey_li.innerHTML = '<a href="/' + surveys[i]['id'] + '">' + surveys[i]['name'] + '</a>';
+        survey_li.innerHTML = '<a href="' + surveys[i]['id'] + '">' + surveys[i]['name'] + '</a>';
         surveys_ul.appendChild(survey_li);
     };
 

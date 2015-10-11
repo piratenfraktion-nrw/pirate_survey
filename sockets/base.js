@@ -3,7 +3,12 @@ var surveys = require('../surveys/base');
 
 // http://stackoverflow.com/questions/9137877/socket-io-send-to-specified-user-id
 
-module.exports = function(io) {
+module.exports = function(io, socketio_jwt, jwt_secret) {
+    /*io.use(socketio_jwt.authorize({
+      secret: jwt_secret,
+      handshake: true
+    }));*/
+
     io.on('connection', function(socket) {
         console.log('a user connected');
         //var user_id = all_sockets.push(socket);
@@ -11,6 +16,8 @@ module.exports = function(io) {
 
         surveys.get_surveys(socket);
 
+        // TODO: user authentication
+        /*
         socket.on('add_survey', function(survey, socket) {
             surveys.add_survey(survey);
             console.log(survey);
@@ -25,7 +32,7 @@ module.exports = function(io) {
         socket.on('new_subject', function(response) {
             surveys.new_subject(response, this);
         });
-
+        */
         socket.on('disconnect', function() {
             console.log('user disconnected');
             //all_sockets.splice(all_sockets.findIndex(user_id), 1);
